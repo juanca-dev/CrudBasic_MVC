@@ -1,0 +1,87 @@
+﻿<!-- creamos un acceso al proyecto que estamos trabajando Crud_Basico MVC-->
+
+@model IEnumerable<CrudBasic_MVC.Models.MContacto>
+
+@{
+    ViewData["Title"] = "Lista de Contactos";
+}
+
+<!-- Empezamos a crear nuestra estructura de HTML para  las paginas de index-->
+
+<h1 class="text-center">Proyecto Lista de Contactos </h1>
+<div class="row">  <!-- creamos una fila de contenido -->
+    <div class="offset-9 col-3 mb-3">
+        <a asp-action="Crear" asp-controller="Inicio" class="btn btn-secondary d-block mx-auto btn-lg">
+            <i class="fa fa-plus-circle" aria-hidden="true"> Nuevo Usuario</i>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+          <div class="card-header bg-dark">
+             <h3 class="text-white"><strong> LISTA DE USUARIOS</strong></h3>
+         </div>
+         </div>
+    </div>
+
+</div>
+<!--CONTENIDO DE LA PAJGINA - TARJETA-->
+
+<div class="card-body">
+    <div class="table-responsive">
+        @if (Model.Count() > 0)
+        {
+            <!-- crear una tabla para mostrar el contenido  de la tabla Contacto en la base de datos -->
+            <table class="table table-bordered" id="tblUsuario" width="100%" cellspacing="0">
+                <thead> <!--encabezado de la tabla-->
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => m.Id)</th>
+                        <th>@Html.DisplayNameFor(m => m.Nombre)</th>
+                        <th>@Html.DisplayNameFor(m => m.Direccion)</th>
+                        <th>@Html.DisplayNameFor(m => m.Email)</th>
+                        <th>@Html.DisplayNameFor(m => m.Telefono)</th>
+                        <th>@Html.DisplayNameFor(m => m.FechaCreacion)</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody> <!--mostrar los resultados de la tabla contacto-->
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td> @Html.DisplayFor(m => item.Id)</td>
+                            <td> @Html.DisplayFor(m => item.Nombre)</td>
+                            <td> @Html.DisplayFor(m => item.Direccion)</td>
+                            <td> @Html.DisplayFor(m => item.Email)</td>
+                            <td> @Html.DisplayFor(m => item.Telefono)</td>
+                            <td> @Html.DisplayFor(m => item.FechaCreacion)</td>
+                            <!-- aqui agregamos los botones de editar detalla y borrar-->
+                            <td>
+                                <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">
+                                    <i class="fa fa-pencil" aria-hidden="true"> Editar</i>
+
+                                </a>
+                                <a class="btn btn-secondary" asp-action="Detalle" asp-route-id="@item.Id">
+                                    <i class="fa fa-info-circle" aria-hidden="true"> Detalle</i>
+
+                                </a>
+                                <a class="btn btn-danger" asp-action="Borrar" asp-route-id="@item.Id">
+                                    <i class="fa fa-trash" aria-hidden="true"> Borrar </i>
+
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            
+        }
+
+    </div>
+
+</div>

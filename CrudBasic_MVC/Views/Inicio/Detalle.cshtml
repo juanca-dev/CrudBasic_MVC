@@ -1,0 +1,39 @@
+﻿<!-- creamos un acceso al proyecto que estamos trabajando Crud_Basico MVC-->
+@model CrudBasic_MVC.Models.MContacto
+
+@{
+    ViewData["Title"] = "Detalle  Usuario";
+}
+
+<!-- Empezamos a crear nuestra estructura de HTML para  las paginas de index-->
+
+<h1 class="text-center">FORMULARIO DETALLE DEL  USUARIO</h1>
+
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>DETALLE DEL USUARIO</strong></h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--CONTENIDO DE LA PAJGINA - TARJETA-->
+
+<div class="card-body">
+    <!-- CREAR UNA LISTA PARA EL DETALLE USUARIO-->
+    <div class="card-body">
+        <!--CREAR LISTA PARA EL DETALLE DEL USUARIO -->
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Nombre: </strong>@Html.DisplayFor(mbox => mbox.Nombre)</li>
+            <li class="list-group-item"><strong>Dirección: </strong>@Html.DisplayFor(mbox => mbox.Direccion)</li>
+            <li class="list-group-item"><strong>Email: </strong>@Html.DisplayFor(mbox => mbox.Email)</li>
+            <li class="list-group-item"><strong>Telefono: </strong>@Html.DisplayFor(mbox => mbox.Telefono)</li>
+            <li class="list-group-item"><strong>Fecha Creación: </strong>@Html.DisplayFor(mbox => mbox.FechaCreacion)</li>
+
+        </ul>
+     <!-- un enlace para regresar a la página index-->
+    <a asp-controller="Inicio" asp-action="Index">Volver</a>
+</div>
